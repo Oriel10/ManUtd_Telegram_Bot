@@ -1,14 +1,16 @@
 import requests
 import json
+# from Constants import constants.football_headers
+import Constants as constants
 
 # man_utd_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/33/next/1"
 
 querystring = {"timezone":"Europe/London"}
 
-headers = {
-	"X-RapidAPI-Key": "f86b7ad105msh8c38ba6202f5d8dp1fb4f0jsn8fccb00a2d20",
-	"X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
-}
+# constants.football_headers = {
+# 	"X-RapidAPI-Key": "f86b7ad105msh8c38ba6202f5d8dp1fb4f0jsn8fccb00a2d20",
+# 	"X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
+# }
 class Date:
     def __init__(self, day, month, year) -> None:
         self.m_day = day
@@ -98,7 +100,7 @@ def getNextFixturesList(num_requested_fixtures : str):
         return None
 
     man_utd_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/33/next/" + num_requested_fixtures
-    response = requests.request("GET", man_utd_url, headers=headers, params=querystring)
+    response = requests.request("GET", man_utd_url, headers=constants.football_headers, params=querystring)
     response_text = response.text.replace("null", "None") #fit to python format
     fixtures_dict = eval(str(response_text))
     # print(fixtures_dict["api"]["fixtures"])
@@ -131,7 +133,7 @@ def getPrevFixturesList(num_requested_fixtures : str):
         return None
 
     man_utd_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/33/last/" + num_requested_fixtures
-    response = requests.request("GET", man_utd_url, headers=headers, params=querystring)
+    response = requests.request("GET", man_utd_url, headers=constants.football_headers, params=querystring)
     response_text = response.text.replace("null", "None") #fit to python format
     fixtures_dict = eval(str(response_text))
     if(fixtures_dict["api"]["results"] == 0):

@@ -41,7 +41,7 @@ def error(update, context):
 def main():
 
     #receive the updates from Telegram and deliver them to the dispatcher
-    updater = Updater(constants.API_KEY, use_context=True)
+    updater = Updater(constants.TELEGRAM_API_KEY, use_context=True)
     
     #Dispatcher that handles the updates and dispatches them to the handlers.
     dp = updater.dispatcher

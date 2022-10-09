@@ -48,8 +48,8 @@ def main():
 
     dp.add_handler(CommandHandler("start", start_command))
     dp.add_handler(CommandHandler("help", help_command))
-    dp.add_handler(CommandHandler("next_i", nexti_command, pass_args=True))
-    dp.add_handler(CommandHandler("prev_i", previ_command, pass_args=True))
+    # dp.add_handler(CommandHandler("next_i", nexti_command, pass_args=True))
+    # dp.add_handler(CommandHandler("prev_i", previ_command, pass_args=True))
 
     dp.add_handler(MessageHandler(Filters.text, handle_message))
 

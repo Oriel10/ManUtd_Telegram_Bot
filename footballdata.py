@@ -1,16 +1,11 @@
 import requests
 import json
-# from Constants import constants.football_headers
 import Constants as constants
 
 # man_utd_url = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/33/next/1"
 
 querystring = {"timezone":"Europe/London"}
 
-# constants.football_headers = {
-# 	"X-RapidAPI-Key": "f86b7ad105msh8c38ba6202f5d8dp1fb4f0jsn8fccb00a2d20",
-# 	"X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
-# }
 class Date:
     def __init__(self, day, month, year) -> None:
         self.m_day = day

@@ -30,6 +30,8 @@ def previ_command(update, context):
         update.message.reply_text("Command Usage: next_i num_of_matches")
         return
     fixtures_list = getPrevFixturesList(context.args[0])
+    update.message.reply_text(fixtures_list) #TODO: delete this line
+    return #TODO: delete this line
     for f in fixtures_list:
         update.message.reply_text(f.GetFixtures()+"\n")
     
@@ -46,7 +48,7 @@ def error(update, context):
 def main():
 
     #receive the updates from Telegram and deliver them to the dispatcher
-    # updater = Updater(constants.TELEGRAM_API_KEY, use_context=True)
+    # updater = Updater(constants.c, use_context=True)
     updater = Updater("5542999003:AAFoaBSxmFklsV-8ooleMdT3UVrWEena39s", use_context=True)
     
     #Dispatcher that handles the updates and dispatches them to the handlers.

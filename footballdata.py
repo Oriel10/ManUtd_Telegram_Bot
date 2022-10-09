@@ -131,17 +131,17 @@ def getPrevFixturesList(num_requested_fixtures : str):
     response = requests.request("GET", man_utd_url, headers=constants.football_headers, params=querystring)
     response_text = response.text.replace("null", "None") #fit to python format
     fixtures_dict = eval(str(response_text))
-    if(fixtures_dict["api"]["results"] == 0):
-        return "No Games Found"
+    if(fixtures_dict['api']['results'] == 0):
+        return 'No Games Found'
     fixtures_list = []
-    for f in fixtures_dict["api"]["fixtures"]:
-        home_team = f["homeTeam"]["team_name"]
-        home_team_goals = f["goalsHomeTeam"]
-        away_team = f["awayTeam"]["team_name"]
-        away_team_goals = f["goalsAwayTeam"]
-        league_name = f["league"]["name"]
-        #"event_date":"2022-08-07T14:00:00+01:00",
-        event_date = f["event_date"]
+    for f in fixtures_dict['api']['fixtures']:
+        home_team = f['homeTeam']['team_name']
+        home_team_goals = f['goalsHomeTeam']
+        away_team = f['awayTeam']["team_name"]
+        away_team_goals = f['goalsAwayTeam']
+        league_name = f['league']['name']
+        #'event_date':'2022-08-07T14:00:00+01:00',
+        event_date = f['event_date']
         game_date = Date(event_date[8:10], event_date[5:7], event_date[0:4])
         game_hour = Hour(event_date[11:13], event_date[14:16]) 
         fixtures_list.append(Fixture(home_team, away_team, league_name, game_date, game_hour, home_team_goals, away_team_goals))
